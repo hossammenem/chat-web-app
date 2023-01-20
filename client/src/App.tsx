@@ -30,8 +30,7 @@ return (
         <SocketsProvider>
           <ChatRoom />
         </SocketsProvider>
-      </RequireAuth>}
-      />
+      </RequireAuth>} />
     </Routes>
   </Router>
   <ToastContainer />

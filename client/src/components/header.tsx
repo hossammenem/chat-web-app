@@ -1,6 +1,6 @@
 import { collapseOpen } from "../collapse";
 import { logout, reset } from '../features/auth/authSlice'
-import { useSelector, useDispatch  } from "react-redux";
+import { useDispatch  } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 function Header(){

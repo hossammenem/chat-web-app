@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
-import { useParams } from "react-router-dom";
 import io, { Socket } from "socket.io-client";
+import { API_URL } from "../api/config";
 
 interface Context {
   socket: Socket;
@@ -13,7 +13,7 @@ var socket: any;
 const roomId  = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
 
 if(window.location.pathname.includes("room")){
-  socket = io("https://chatappbackend-pxhp.onrender.com/", {query: {id: roomId}});
+  socket = io(API_URL, {query: {id: roomId}});
 }
 
 const SocketContext = createContext<Context>({
@@ -25,7 +25,7 @@ const SocketContext = createContext<Context>({
 
 function SocketsProvider(props: any) {
   const [sender, setSender] = useState("");
-  const [messages, setMessages] = useState([{}]);
+  const [messages, setMessages] = useState([]);
 
   return (
     <SocketContext.Provider

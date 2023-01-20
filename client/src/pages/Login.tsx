@@ -5,8 +5,10 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { login, reset } from '../features/auth/authSlice'
 import PreLoader from '../components/PreLoader'
+import useDocumentTitle from "../hooks/useDocumentTitle";
 
 function Login() {
+  useDocumentTitle("Login")
 const [formData, setFormData] = useState({
     name: '',
     password: '',

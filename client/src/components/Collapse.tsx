@@ -1,25 +1,11 @@
 import { collapseClose } from "../collapse";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import getUserInfo from "../api/getUserInfo";
-import getRoomInfo from "../api/getRoomInfo";
-import PreLoader from "./PreLoader";
+import useUser from "../hooks/useUser";
 
 function Collapse(){
-  const [rooms, setRooms] = useState([]);
-  const { user } = useSelector( (state: any) => state.auth )
-
-  useEffect(()=> {
-    async function fetchUserInfo(){
-      const userInfo = await getUserInfo(user.token)
-        setRooms(userInfo.rooms)
-    }
-    fetchUserInfo()
-  }, [user])
+  const { rooms } = useUser()
 
   return (
     <>
-
     <div className="collapse-div" id="collapse-div">
       <div style={{width: "100%", height: "65px"}}>
         <button onClick={collapseClose}>&lt;</button>
@@ -39,7 +25,6 @@ function Collapse(){
         )}
         </>)
         }
-
       </div>
     </div>
     <div className="collapse-wrapper" id="collapse-wrapper"></div>
